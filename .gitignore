@@ -38,3 +38,6 @@ data/candidate_repairs/**
 !data/candidate_repairs/.gitkeep
 
 # 论文数据保留：results/final/ 的汇总 CSV 与 results/logs/ 的运行清单均纳入版本管理
+
+results/logs/retry_glm.log
+results/logs/smoke__*.json
