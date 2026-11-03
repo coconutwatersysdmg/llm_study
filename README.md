@@ -20,9 +20,10 @@ cp .env.example .env      # 填入 ZAI_API_KEY / DASHSCOPE_API_KEY
 python scripts/run_formal_pipeline.py
 ```
 
-不调用 API、直接用已入库的逐请求记录重算全部汇总表：
+不调用 API，直接用已入库的冻结数据与逐请求记录重算全部汇总表：
 
 ```bash
+python scripts/validate_frozen_dataset.py                                           # 先确认数据哈希
 python scripts/summarize_results.py                                                 # 重算 results/final/
 cd ../experiments
 python scripts/build_llm_paper_tables.py                                            # 重建表1、表2
@@ -46,7 +47,7 @@ generation/  数据库/脏数据/候选修复/问答数据生成
 evaluation/  答案归一化、配对检验等指标计算
 prompts/     Prompt 模板（PROMPT_VERSION 变更须升版本）
 scripts/     数据构建、连通性检查、成本估算、正式实验、汇总
-results/     final（汇总 CSV）、logs（运行清单）、raw（逐请求记录，未入库）
+results/     final（汇总 CSV）、logs（运行清单）、raw（逐请求记录，已入库）
 dev/         开发期脚本，非论文实验所需
 tests/       13 项单元测试
 ```
@@ -86,10 +87,11 @@ some_dir/
 
 ## 6. 数据冻结与可核对性
 
-- `data/qa/dataset_manifest.json` 入库，包含 `dataset_version`、两个种子、各表规模、三类问题计数、模式定义，以及 `SHA256_questions` / `SHA256_evidence`。
-- `scripts/validate_frozen_dataset.py` 重建后比对哈希，不一致即中止。
-- 逐条问答数据（`data/*.jsonl`）与逐请求记录（`results/raw/*.jsonl`，约 20 MB）不入库，用 `scripts/build_dataset.py`、`scripts/run_formal_pipeline.py` 重新生成。
+- 论文使用的冻结数据已入库：`data/qa/questions.jsonl`（1200 条）、`data/qa/evidence.jsonl`（对应证据），以及 `data/qa/dataset_manifest.json`。
+- `dataset_manifest.json` 记录 `dataset_version`、两个生成种子、各表规模、三类问题计数、模式定义，以及 `SHA256_questions` / `SHA256_evidence`；`scripts/validate_frozen_dataset.py` 比对哈希，不一致即以非零码退出。
+- 逐请求记录 `results/raw/*.jsonl`（约 20 MB）入库，含每次请求的条件、答案、正确性与 Prompt 哈希，可在不调用 API 的情况下重算全部汇总表。
 - `results/logs/*_manifest.json` 记录模型快照、温度、Prompt 版本、数据集版本与题号清单。
+- `scripts/build_dataset.py` 用于从零重建数据库与问答数据（不调用 API），供更换规模或做新实验时使用；它会覆盖 `data/` 下的数据与清单，复现论文结果不需要运行它，请以入库的冻结版本为准。
 
 ## 7. 成本
 

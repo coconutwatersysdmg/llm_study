@@ -25,11 +25,10 @@ results/smoke/**
 results/smoke_report.md
 manual_audit.csv
 
-# 生成的数据（由 scripts/build_dataset.py 按固定种子重建，清单与 SHA256 已入库）
+# 生成数据（论文使用的冻结版本已入库，可用 dataset_manifest.json 的 SHA256 校验）
 data/database/**/*.csv
 data/database/**/*.json
 data/database/**/*.jsonl
-data/qa/*.jsonl
 data/candidate_repairs/**
 !data/database/clean/.gitkeep
 !data/database/dirty/.gitkeep
