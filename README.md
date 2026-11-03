@@ -1,6 +1,6 @@
 # BCNF 条件下 LLM 结构化问答实验
 
-本仓库是论文《BCNF条件下的数据库子集修复检查问题研究》第 4.5 节的问答实验代码，产出图6（Clean / Dirty / Valid Repair 三种条件下的问答准确率）以及表1（基于函数依赖提示的冲突识别）和表2（过度删除与残余冲突两类候选修复缺陷的影响）；全流程用 `python scripts/run_formal_pipeline.py` 一次跑完，只重算图表而不调用 API 时用 `python scripts/build_paper_tables.py`；环境为 Python 3.12 + `pip install -r requirements.txt`，且必须与算法仓库 `experiments` 放在同一父目录下。
+本仓库是论文《BCNF条件下的数据库子集修复检查问题研究》第 4.5 节的问答实验代码，产出图6（Clean / Dirty / Valid Repair 三种条件下的问答准确率）以及表1（基于函数依赖提示的冲突识别）和表2（过度删除与残余冲突两类候选修复缺陷的影响）；全流程用 `python scripts/run_formal_pipeline.py` 一次跑完，不调用 API、仅用入库数据重算全部汇总时依次执行 `scripts/validate_frozen_dataset.py` 与 `scripts/summarize_results.py`；环境为 Python 3.12 + `pip install -r requirements.txt`，且必须与算法仓库 `experiments` 放在同一父目录下。
 
 ## 1. 对应论文位置
 
