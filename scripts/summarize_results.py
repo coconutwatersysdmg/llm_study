@@ -409,7 +409,7 @@ def write_final_report(
     lines = [
         "# LLM Final Report",
         "",
-        "## 一、Dataset",
+        "## 1. Dataset",
         f"- dataset_version: `{manifest.get('dataset_version')}`",
         f"- question_count: {manifest.get('question_count')}",
         f"- category_counts: {manifest.get('category_counts')}",
@@ -417,12 +417,12 @@ def write_final_report(
         f"- SHA256 evidence: `{sha_e}`",
         f"- prompt_version: `{PROMPT_VERSION}`",
         "",
-        "## 二、Models",
+        "## 2. Models",
         f"- zhipu: `{config.MODELS['zhipu']['model']}`",
         f"- bailian: `{config.MODELS['bailian']['model']}` (enable_thinking=False)",
         f"- bailian base_url: `{config.MODELS['bailian']['base_url']}`",
         "",
-        "## 三、Exp1",
+        "## 3. Exp1",
     ]
     for r in exp1_rows:
         if r["category"] == "ALL":
@@ -433,7 +433,7 @@ def write_final_report(
     lines.append("")
     lines.append("Dirty+FD conflict metrics: see `exp1_conflict_summary.csv`.")
     lines.append("")
-    lines.append("## 四、Exp2A")
+    lines.append("## 4. Exp2A")
     for r in exp2a_rows:
         if r["subset"] == "affected":
             lines.append(
@@ -441,7 +441,7 @@ def write_final_report(
                 f"{r['condition']}: acc={r['accuracy']} n={r['n']}"
             )
     lines.append("")
-    lines.append("## 五、Exp2B")
+    lines.append("## 5. Exp2B")
     for r in exp2b_rows:
         lines.append(
             f"- {r['provider']} rate={r['error_rate']} seed={r['corruption_seed']}: "
@@ -450,7 +450,7 @@ def write_final_report(
             f"checked_exposure={r['checked_exposure_rate']}"
         )
     lines.append("")
-    lines.append("## 六、统计显著性")
+    lines.append("## 6. Statistical significance")
     lines.append("See `exp1_pairwise.csv` and `exp2_overdeletion_pairwise.csv`.")
     for r in exp1_pair[:12]:
         lines.append(
@@ -458,18 +458,18 @@ def write_final_report(
             f"CI=[{r['ci_low']},{r['ci_high']}] p={r['mcnemar_p']}"
         )
     lines.append("")
-    lines.append("## 七、API usage")
+    lines.append("## 7. API usage")
     for r in usage_rows:
         lines.append(
             f"- {r['file']}: req={r['requests']} ok={r['success']} fail={r['failures']} "
             f"retries={r['retries']} tokens={r['total_tokens']}"
         )
     lines.append("")
-    lines.append("## 八、Cost")
+    lines.append("## 8. Cost")
     for r in cost_rows:
         lines.append(f"- {r['provider']} {r['file']}: CNY≈{r['estimated_cny']}")
     lines.append("")
-    lines.append("## 九、自动科研审计")
+    lines.append("## 9. Automated research audit")
     checks = [
         ("1200 questions unchanged", manifest.get("question_count") == 1200),
         ("dataset SHA unchanged", sha_q == manifest.get("SHA256_questions") and sha_e == manifest.get("SHA256_evidence")),

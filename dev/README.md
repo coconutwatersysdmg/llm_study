@@ -1,8 +1,8 @@
-# dev — 开发期脚本
+# dev — development-era scripts
 
-本目录不属于论文实验流程，复现论文结果不需要这里的任何文件。
+This directory is not part of the paper's experimental pipeline, and nothing here is needed to reproduce the reported results.
 
-| 文件 | 说明 |
+| File | Description |
 |---|---|
-| `retry_failed_glm.py` | 智谱接口偶发失败时按 `request_id` 补跑，正式流程已内置重试与断点续跑 |
-| `build_paper_tables_from_raw.py` | 直接从 `results/raw/*.jsonl` 建表1、表2；正式路径改为先 `summarize_results.py` 再 `experiments/scripts/build_llm_paper_tables.py`，两者输出一致 |
+| `retry_failed_glm.py` | Re-runs requests that failed transiently against the Zhipu API, keyed by `request_id`; the formal pipeline now has retries and resume built in |
+| `build_paper_tables_from_raw.py` | Builds Tables 1 and 2 directly from `results/raw/*.jsonl`; the formal path is now `summarize_results.py` followed by `experiments/scripts/build_llm_paper_tables.py`, with identical output |
