@@ -1,0 +1,141 @@
+{
+  "dataset_version": "bcnf_llm_v1",
+  "generation_seed": 42,
+  "evidence_order_seed": 42,
+  "student_count": 1000,
+  "course_count": 100,
+  "enrollment_count": 5496,
+  "question_count": 1200,
+  "category_counts": {
+    "Irrelevant-Conflict": 360,
+    "Answer-Critical-Conflict": 480,
+    "No-Conflict": 360
+  },
+  "dirty_conflict_counts": {
+    "STUDENT": 200,
+    "COURSE": 40,
+    "ENROLLMENT": 400
+  },
+  "schema": {
+    "STUDENT": {
+      "name": "STUDENT",
+      "attributes": [
+        "student_id",
+        "name",
+        "major",
+        "grade_level"
+      ],
+      "fds": [
+        {
+          "lhs": [
+            "student_id"
+          ],
+          "rhs": [
+            "name",
+            "major",
+            "grade_level"
+          ]
+        }
+      ],
+      "candidate_keys": [
+        [
+          "student_id"
+        ]
+      ]
+    },
+    "COURSE": {
+      "name": "COURSE",
+      "attributes": [
+        "course_id",
+        "course_name",
+        "credits",
+        "department"
+      ],
+      "fds": [
+        {
+          "lhs": [
+            "course_id"
+          ],
+          "rhs": [
+            "course_name",
+            "credits",
+            "department"
+          ]
+        }
+      ],
+      "candidate_keys": [
+        [
+          "course_id"
+        ]
+      ]
+    },
+    "ENROLLMENT": {
+      "name": "ENROLLMENT",
+      "attributes": [
+        "student_id",
+        "course_id",
+        "score"
+      ],
+      "fds": [
+        {
+          "lhs": [
+            "student_id",
+            "course_id"
+          ],
+          "rhs": [
+            "score"
+          ]
+        }
+      ],
+      "candidate_keys": [
+        [
+          "student_id",
+          "course_id"
+        ]
+      ]
+    }
+  },
+  "FDs": {
+    "STUDENT": [
+      "student_id->name,major,grade_level"
+    ],
+    "COURSE": [
+      "course_id->course_name,credits,department"
+    ],
+    "ENROLLMENT": [
+      "student_id,course_id->score"
+    ]
+  },
+  "BCNF_validation": {
+    "STUDENT": true,
+    "COURSE": true,
+    "ENROLLMENT": true
+  },
+  "valid_repair_verification": {
+    "STUDENT": {
+      "candidate_consistent": true,
+      "is_repair": true,
+      "r_size": 1200,
+      "r_prime_size": 1000,
+      "boundary": "Checker confirms F-satisfaction and S-repair maximality. It does NOT claim retained tuples are real-world facts."
+    },
+    "COURSE": {
+      "candidate_consistent": true,
+      "is_repair": true,
+      "r_size": 140,
+      "r_prime_size": 100,
+      "boundary": "Checker confirms F-satisfaction and S-repair maximality. It does NOT claim retained tuples are real-world facts."
+    },
+    "ENROLLMENT": {
+      "candidate_consistent": true,
+      "is_repair": true,
+      "r_size": 5896,
+      "r_prime_size": 5496,
+      "boundary": "Checker confirms F-satisfaction and S-repair maximality. It does NOT claim retained tuples are real-world facts."
+    }
+  },
+  "SHA256_questions": "08b09471af99fca05a97288eb29246eecd5ef113b778fe1cdc4bb3298faf3b42",
+  "SHA256_evidence": "7c0a9650516a94b7aafb27e18c860b96e490a2af15c7945e61d09dec559a6cc6",
+  "design_note": "Controlled evidence setting: evidence is attached from question metadata; no retriever / embedding / vector DB is used. This isolates FD-conflict effects from retrieval failure.",
+  "checker_boundary": "Repair checker verifies F-satisfaction and S-repair maximality only. It does not decide which conflicting tuple is real-world true."
+}

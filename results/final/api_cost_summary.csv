@@ -1,0 +1,9 @@
+provider,file,prompt_tokens,completion_tokens,estimated_cny,pricing_snapshot
+zhipu,smoke__zhipu.jsonl,70883,1319,0.000000,2026-08-17
+bailian,smoke__bailian.jsonl,80805,584,0.016628,2026-08-17
+zhipu,exp1_zhipu.jsonl,852146,16159,0.000000,2026-08-17
+bailian,exp1_bailian.jsonl,968762,7338,0.199623,2026-08-17
+zhipu,exp2_overdeletion_zhipu.jsonl,454576,10142,0.000000,2026-08-17
+bailian,exp2_overdeletion_bailian.jsonl,527839,4242,0.108961,2026-08-17
+zhipu,exp2_residual_zhipu.jsonl,168347,3524,0.000000,2026-08-17
+bailian,exp2_residual_bailian.jsonl,196650,1373,0.040428,2026-08-17

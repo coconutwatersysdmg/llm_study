@@ -1,0 +1,9 @@
+file,provider,model,requests,success,failures,retries,prompt_tokens,completion_tokens,total_tokens
+smoke__zhipu.jsonl,zhipu,glm-4-flash-250414,400,399,1,16,70883,1319,72202
+smoke__bailian.jsonl,bailian,qwen3.7-flash-2026-07-15,400,400,0,0,80805,584,81389
+exp1_zhipu.jsonl,zhipu,glm-4-flash-250414,4800,4800,0,139,852146,16159,868305
+exp1_bailian.jsonl,bailian,qwen3.7-flash-2026-07-15,4800,4800,0,0,968762,7338,976100
+exp2_overdeletion_zhipu.jsonl,zhipu,glm-4-flash-250414,3136,3136,0,125,454576,10142,464718
+exp2_overdeletion_bailian.jsonl,bailian,qwen3.7-flash-2026-07-15,3136,3136,0,0,527839,4242,532081
+exp2_residual_zhipu.jsonl,zhipu,glm-4-flash-250414,2072,2072,0,46,168347,3524,171871
+exp2_residual_bailian.jsonl,bailian,qwen3.7-flash-2026-07-15,2072,2072,0,0,196650,1373,198023

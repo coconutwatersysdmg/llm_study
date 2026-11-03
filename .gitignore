@@ -1,0 +1,40 @@
+# 凭据
+.env
+*apiKey*.csv
+*apikey*.csv
+*secret*.csv
+credentials*.csv
+secrets*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+
+# 逐请求原始记录已入库（约 20 MB），可直接离线重算全部汇总表；仅冒烟记录除外
+results/raw/smoke__*.jsonl
+!results/raw/.gitkeep
+
+# 冒烟测试产物
+results/smoke/**
+results/smoke_report.md
+manual_audit.csv
+
+# 生成的数据（由 scripts/build_dataset.py 按固定种子重建，清单与 SHA256 已入库）
+data/database/**/*.csv
+data/database/**/*.json
+data/database/**/*.jsonl
+data/qa/*.jsonl
+data/candidate_repairs/**
+!data/database/clean/.gitkeep
+!data/database/dirty/.gitkeep
+!data/database/valid_repair/.gitkeep
+!data/qa/.gitkeep
+!data/candidate_repairs/.gitkeep
+
+# 论文数据保留：results/final/ 的汇总 CSV 与 results/logs/ 的运行清单均纳入版本管理

@@ -1,0 +1,7 @@
+model,provider,comparison,n,acc_a,acc_b,diff_a_minus_b,ci_low,ci_high,mcnemar_p
+glm-4-flash-250414,zhipu,clean_vs_dirty,1200,1.000000,0.813333,0.186667,0.164167,0.209167,7.41841e-68
+glm-4-flash-250414,zhipu,dirty_vs_valid_repair,1200,0.813333,1.000000,-0.186667,-0.209167,-0.164167,7.41841e-68
+glm-4-flash-250414,zhipu,clean_vs_valid_repair,1200,1.000000,1.000000,0.000000,0.000000,0.000000,1
+qwen3.7-flash-2026-07-15,bailian,clean_vs_dirty,1200,1.000000,0.735833,0.264167,0.239167,0.289167,7.49068e-96
+qwen3.7-flash-2026-07-15,bailian,dirty_vs_valid_repair,1200,0.735833,1.000000,-0.264167,-0.289167,-0.239167,7.49068e-96
+qwen3.7-flash-2026-07-15,bailian,clean_vs_valid_repair,1200,1.000000,1.000000,0.000000,0.000000,0.000000,1
