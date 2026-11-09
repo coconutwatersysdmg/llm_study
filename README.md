@@ -1,6 +1,6 @@
 # LLM Structured Question Answering on Dirty BCNF Databases
 
-Code for Section 4.5 of the paper *Leveraging BCNF Schema Structure for Efficient Subset-Repair Checking*. It produces Fig. 6 (QA accuracy under Clean / Dirty / Valid Repair conditions) together with Table 1 (conflict identification with explicit FD hints) and Table 2 (effect of two families of defective candidate repairs: over-deletion and residual conflicts). The whole pipeline runs with `python scripts/run_formal_pipeline.py`. To recompute every summary from the data in the repository without calling any API, run `scripts/validate_frozen_dataset.py` and then `scripts/summarize_results.py`. Requires Python 3.12 and `pip install -r requirements.txt`, and the repository must sit next to the algorithm repository `experiments` under the same parent directory.
+Code for Section 4.5 of the paper *Efficient Subset-Repair Checking for a Relation Schema in BCNF*. It produces Fig. 6 (QA accuracy under Clean / Dirty / Valid Repair conditions) together with Table 1 (conflict identification with explicit FD hints) and Table 2 (effect of two families of defective candidate repairs: over-deletion and residual conflicts). The whole pipeline runs with `python scripts/run_formal_pipeline.py`. To recompute every summary from the data in the repository without calling any API, run `scripts/validate_frozen_dataset.py` and then `scripts/summarize_results.py`. Requires Python 3.12 and `pip install -r requirements.txt`, and the repository must sit next to the algorithm repository `experiments` under the same parent directory.
 
 ## 1. Mapping to the paper
 
@@ -102,7 +102,7 @@ Evidence is attached in a controlled way: the records matching each question's m
 
 If you use this code, please cite:
 
-> Leveraging BCNF Schema Structure for Efficient Subset-Repair Checking. IEEE International Conference on Data Engineering (ICDE), 2027.
+> Efficient Subset-Repair Checking for a Relation Schema in BCNF. IEEE International Conference on Data Engineering (ICDE), 2027.
 
 ## 9. License
 
